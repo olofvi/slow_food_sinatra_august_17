@@ -1,7 +1,7 @@
 Given(/^I visit the site$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  visit '/'
 end
 
-Then(/^I should see a message saying "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should see a message saying "([^"]*)"$/) do |message|
+  expect(page).to have_content message
 end
