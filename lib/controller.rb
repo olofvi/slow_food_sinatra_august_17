@@ -51,7 +51,7 @@ class SlowFood < Sinatra::Base
   end
 
   get '/' do
-    @dishes = Dish.all 
+    @dishes = Dish.all
     erb :index
   end
 
@@ -87,6 +87,11 @@ class SlowFood < Sinatra::Base
   get '/protected' do
     env['warden'].authenticate!
 
+    erb :protected
+  end
+
+  get '/protected' do
+    @dishes = Dish.all
     erb :protected
   end
 end
