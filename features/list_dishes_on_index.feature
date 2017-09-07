@@ -25,3 +25,12 @@ Scenario: user sees the price of a dish
   And its dish desription is "a delicous pasta dish with egg and bacon" in our database
   And I visit the site
   Then I should se a message saying "a delicous pasta dish with egg and bacon"
+
+  Scenario: user can view different categories of dishes
+  Given there is a category named "Starters" in our database
+  And there is a category named "Main" in our database
+  And there is a category named "Deserts" in our database
+  And I visit the site
+  Then I should see message saying "Starters"
+  And I should see message saying "Main"
+  And I should see message saying "Deserts"

@@ -4,4 +4,5 @@ class Dish
   property :name, String
   property :description, String
   property :price, Integer
+  property :category, String
 end
