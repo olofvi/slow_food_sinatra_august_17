@@ -12,6 +12,12 @@ Given(/^there is a dish named "([^"]*)" in our database$/) do |dish_name|
   Dish.create(name: dish_name)
 end
 
+Given(/^the following users exist:$/) do |table|
+  table.hashes.each do |user|
+    User.create(user)
+  end
+end
+
 Given(/^I visit the login page$/) do
   visit '/auth/login'
 end
@@ -27,8 +33,13 @@ Given(/^I visit the protected page$/) do
 end
 
 And(/^I click the button 'Edit info'$/) do
-  click_button("Edit info")
+  click_link_or_button('Edit info')
 end
+
+Then(/^show me the page$/) do
+  save_and_open_page
+end
+
 
 When(/^I fill the description field$/) do
   pending # Write code here that turns the phrase above into concrete actions
