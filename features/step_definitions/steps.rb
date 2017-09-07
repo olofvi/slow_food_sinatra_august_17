@@ -17,3 +17,7 @@ end
 Then(/^I should se a message saying "([^"]*)"$/) do |message|
   expect(page).to have_content message
 end
+
+Given(/^its dish desription is "([^"]*)" in our database$/) do |dish_description|
+  Dish.create(name: dish_description)
+end
