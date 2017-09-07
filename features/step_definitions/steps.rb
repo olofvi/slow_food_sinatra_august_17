@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 Given(/^I visit the site$/) do
   visit '/'
 end
@@ -10,28 +12,32 @@ Given(/^there is a dish named "([^"]*)" in our database$/) do |dish_name|
   Dish.create(name: dish_name)
 end
 
-Given(/^I visit the page$/) do
+Given(/^I visit the login page$/) do
   visit '/auth/login'
 end
 
-Then(/^I should be logged in as an admin$/) do
+Given(/^I log in as an admin$/) do
   fill_in('user[username]', with: 'admin')
   fill_in('user[password]', with: 'admin')
+  click_button('Log In')
 end
 
 Given(/^I visit the protected page$/) do
   visit '/protected'
 end
 
-Then(/^I can click the button 'Create'$/) do
-  click_link_or_button('Create')
+And(/^I click the button 'Edit info'$/) do
+  click_button("Edit info")
 end
 
-
-Then(/^show me the page$/) do
-  save_and_open_page
+When(/^I fill the description field$/) do
+  pending # Write code here that turns the phrase above into concrete actions
 end
 
-#Then(/^I should see buttons 'Create'$/) do
-  #click_link_or_button('Create')
-#end
+When(/^I submit$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the message "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end

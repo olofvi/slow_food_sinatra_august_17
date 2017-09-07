@@ -89,4 +89,8 @@ class SlowFood < Sinatra::Base
 
     erb :protected
   end
+
+  get '/edit' do
+    erb :edit
+  end
 end

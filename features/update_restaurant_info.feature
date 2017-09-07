@@ -1,13 +1,14 @@
 Feature: update the restaurant info
 As an owner
 In order to update the restaurant's info
-I would like to create/change/remove the dishes
+I would like to add or change restaurant's description
 
 Scenario: admin loggs in
-  Given I visit the page
-  Then I should be logged in as an admin
-
-Scenario: admin accesses the protected page
-  Given I visit the protected page
-  Then I can click the button 'Create'
+  Given I visit the login page
+  And I log in as an admin
+  Then I visit the protected page
+  When I click the button 'Edit info'
+  And I fill the description field
+  And I submit
+  Then I should see the message "You have successfully updated the description"
   Then show me the page
