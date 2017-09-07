@@ -1,7 +1,23 @@
-<% if @dishes.any? %>
-  <% @dishes.each do |dish| %>
-    <%= dish.name %>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Restaurant</title>
+</head>
+
+<body>
+
+<div>
+  <h1>Menu</h1>
+  <% if @dishes.any? %>
+    <% @dishes.each do |dish| %>
+      <h2> <%= dish.name %> </h2>
+      <p> <%= dish.description %> </p>
+      <p> Price: <%= dish.price %> kr </p>
+    <%end%>
+  <% else %>
+    <p>There are no dishes in the system!</p>
   <%end%>
-<% else %>
-  <p>There are no dishes in the system</p>
-<%end%>
+</div>
+
+</body>
+</html>
