@@ -89,9 +89,4 @@ class SlowFood < Sinatra::Base
 
     erb :protected
   end
-
-  get '/protected' do
-    @dishes = Dish.all
-    erb :protected
-  end
 end
