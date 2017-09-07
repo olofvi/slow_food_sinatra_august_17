@@ -13,3 +13,9 @@ Scenario: user sees info about a dish if the dishes exist in database
   And I visit the site
   Then I should see a message saying "Carbonara"
   And I should see a message saying "Bolognese"
+
+Scenario: user sees the price of a dish
+  Given there is a dish named "Carbonara" in our database
+  And its dish price is "120" in our database
+  And I visit the site
+  Then I should se a message saying "120"
