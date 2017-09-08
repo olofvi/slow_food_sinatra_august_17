@@ -25,3 +25,9 @@ Scenario: user sees the price of a dish
   And its dish desription is "a delicous pasta dish with egg and bacon" in our database
   And I visit the site
   Then I should se a message saying "a delicous pasta dish with egg and bacon"
+
+Scenario: user can view category of dish
+  Given there is a dish named "Carbonara" in our database
+  And the Carbonara has the category "Main" in our database
+  And I visit the site
+  Then I should see message saying "Main"

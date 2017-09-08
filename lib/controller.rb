@@ -51,7 +51,7 @@ class SlowFood < Sinatra::Base
   end
 
   get '/' do
-    @dishes = Dish.all
+    @dishes_by_category = Dish.all.group_by{|h| h[:category]}
     erb :index
   end
 
