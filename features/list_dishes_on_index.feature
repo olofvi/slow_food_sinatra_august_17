@@ -28,7 +28,7 @@ Scenario: user sees the price of a dish
 
 Scenario: user visits the site
   And I visit the site
-  Then I should se a message saying "Restaurant Spice It Up"
+  Then I should se a message saying "Spice It Up"
 
 Scenario: user visits the site
   And I visit the site
