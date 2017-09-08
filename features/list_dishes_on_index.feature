@@ -25,3 +25,11 @@ Scenario: user sees the price of a dish
   And its dish desription is "a delicous pasta dish with egg and bacon" in our database
   And I visit the site
   Then I should se a message saying "a delicous pasta dish with egg and bacon"
+
+Scenario: user visits the site
+  And I visit the site
+  Then I should se a message saying "Restaurant Spice It Up"
+
+Scenario: user visits the site
+  And I visit the site
+  Then I should se a message saying "Welcome to Spice It Up! Are you tired of the same boring food day after day? Don't worry, we got your back! We specialise in the best food from Iceland, Kyrgyzstan, South Africa and Sweden. Try it out!"
