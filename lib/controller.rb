@@ -93,4 +93,11 @@ class SlowFood < Sinatra::Base
   get '/edit' do
     erb :edit
   end
+
+  post '/edit' do
+    @restaurant = Restaurant.get(1)
+    @restaurant.update(description: params[:description])
+    flash[:success] = "You have successfully updated the restaurant's description"
+    redirect '/'
+  end
 end

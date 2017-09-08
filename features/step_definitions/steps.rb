@@ -48,6 +48,12 @@ Then(/^show me the page$/) do
   save_and_open_page
 end
 
-Then(/^I should see the message "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^I should see the message "([^"]*)"$/) do |content|
+  expect(page).to have_content content
+end
+
+Given(/^I the following restaurant:$/) do |table|
+  table.hashes.each do |restaurant|
+    Restaurant.create(restaurant)
+  end
 end
