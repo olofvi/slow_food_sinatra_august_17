@@ -10,8 +10,8 @@ Scenario: admin loggs in
   Given I visit the login page
   And I log in as an admin
   Then I visit the protected page
-  Then show me the page
   When I click the button 'Edit info'
-  And I fill the description field
+  And I fill the description field 'Opening hours'
   And I submit
   Then I should see the message "You have successfully updated the description"
+  Then show me the page
