@@ -3,6 +3,11 @@ As an owner
 In order to update the restaurant's info
 I would like to add or change restaurant's description
 
+Background:
+  Given I the following restaurant:
+    | name      | description               |
+    | FoodTrack | We sell awesome food here |
+
 Scenario: admin loggs in
   Given the following users exist:
     | username | password |
