@@ -11,7 +11,7 @@ Scenario: admin loggs in
   And I log in as an admin
   Then I visit the protected page
   When I click the button 'Edit info'
+  Then show me the page
   And I fill the description field 'Opening hours'
   And I submit
-  Then I should see the message "You have successfully updated the description"
-  Then show me the page
+  Then I should see the message "You have successfully updated the restaurant's description"

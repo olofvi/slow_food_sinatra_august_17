@@ -36,18 +36,18 @@ And(/^I click the button 'Edit info'$/) do
   click_link_or_button('Edit info')
 end
 
-When(/^I fill the description field 'Opening hours'$/) do
+And(/^I fill the description field 'Opening hours'$/) do
   expect(page).to have_content('Opening hours')
 end
 
-When(/^I submit$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see the message "([^"]*)"$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+And(/^I submit$/) do
+  click_link_or_button('submit')
 end
 
 Then(/^show me the page$/) do
   save_and_open_page
+end
+
+Then(/^I should see the message "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
 end
