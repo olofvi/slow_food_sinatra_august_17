@@ -1,10 +1,10 @@
 require './lib/models/order.rb'
 
-describe Dish do
+describe Order do
   it{is_expected.to have_property :id}
   it{is_expected.to have_many :order_items}
-  it{is_expected.to belongs_to :user}
-  it{is_expected.to validates_presence_of :user}
+  it{is_expected.to belong_to :user}
+  it{is_expected.to validate_presence_of :user}
 
    let(:buyer) { User.create!(username: 'Buyer',
                              password: 'password',
