@@ -12,4 +12,18 @@ class Order
   before :save do
     set_pick_up_time
   end
+
+  def add_item(obj, price, qty)
+    OrderItem.create(dish: obj, price: price, quantity: qty, order: self)
+  end
+
+  def total
+    total_price = 0
+    self.order_items.each { |item| total_price += (item.price * item.quantity)}
+    items_total
+  end
+
+  def set_pick_up_time
+    self.pick_up_time = Time.now + 1800
+  end
 end
