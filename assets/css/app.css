@@ -1,0 +1,12 @@
+
+input[type="text"] {
+  border-radius: 20px;
+}
+
+input[type="password"] {
+  border-radius: 20px;
+}
+
+input[type="email"] {
+  border-radius: 20px;
+}
