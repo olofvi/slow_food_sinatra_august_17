@@ -20,11 +20,13 @@
     <% @dishes_by_category.each do |key, category| %>
       <h2> <%= key %> </h2>
       <% category.each do |dish| %>
+        <div id="<%= "dish_#{dish.id}" %>">
         <h3> <%= dish.name %> </h3>
         <p> <%= dish.description %> </p>
         <p> Price: <%= dish.price %> kr </p>
-        <p><a href="#" class="button">Add to order</a><br/>
-        <% end %>
+        <p><a href="<%= "/order/add/#{dish.id}" %>">Add</a><br/>
+        </div>
+      <% end %>
     <% end %>
   <% else %>
     <p>There are no dishes in the system!</p>
