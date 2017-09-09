@@ -1,7 +1,7 @@
 class Order
   include DataMapper::Resource
 
-  property :id, Serial, key: true, required: true
+  property :id, Serial, key: true, required: false
   property :pick_up_time, Time
 
   has n, :order_items

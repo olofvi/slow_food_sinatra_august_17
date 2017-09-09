@@ -10,6 +10,7 @@ Given(/^I click "([^"]*)" for "([^"]*)"$/) do |button, dish_name|
   end
 end
 
-Then(/^my order should contain "([^"]*)" item$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+Then(/^my order should contain "([^"]*)" item$/) do |count|
+  order = Order.last
+    expect(order.order_items.count).to eq count.to_i
 end
