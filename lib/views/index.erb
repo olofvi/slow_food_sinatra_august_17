@@ -1,7 +1,34 @@
-<% if @dishes.any? %>
-  <% @dishes.each do |dish| %>
-    <%= dish.name %>
-  <%end%>
-<% else %>
-  <p>There are no dishes in the system</p>
-<%end%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spice It Up</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+< align="center" id="info">
+  <pre>Contact information:  email: you_wanna@spice_it_up.now  |  Address: Spice rd 1, 234 56 It, Up  |  Owner: Hothead-Hermes</pre>
+  <h1>Restaurant Spice It Up</h1>
+  <p>Opening hours: 12.00-24.00</p>
+   <p><%= Restaurant.description %></p>
+
+<div align="center">
+  <h1>Menu</h1>
+
+  <% if @dishes_by_category.any? %>
+    <% @dishes_by_category.each do |key, category| %>
+      <h2> <%= key %> </h2>
+      <% category.each do |dish| %>
+        <h3> <%= dish.name %> </h3>
+        <p> <%= dish.description %> </p>
+        <p> Price: <%= dish.price %> kr </p>
+        <p><a href="#" class="button">Add to order</a><br/>
+        <% end %>
+    <% end %>
+  <% else %>
+    <p>There are no dishes in the system!</p>
+  <% end %>
+
+  </div>
+</body>
+</html>
