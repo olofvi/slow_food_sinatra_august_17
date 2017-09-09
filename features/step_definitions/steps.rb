@@ -44,10 +44,6 @@ And(/^I submit$/) do
   click_link_or_button('submit')
 end
 
-Then(/^show me the page$/) do
-  save_and_open_page
-end
-
 Then(/^I should see the message "([^"]*)"$/) do |content|
   expect(page).to have_content content
 end
@@ -56,4 +52,12 @@ Given(/^I the following restaurant:$/) do |table|
   table.hashes.each do |restaurant|
     Restaurant.create(restaurant)
   end
+
+Then(/^I see a new description on the main page$/) do |description|
+expect(page).to have_content description
+end
+
+Then /^show me the page$/ do
+  save_and_open_page
+end
 end
