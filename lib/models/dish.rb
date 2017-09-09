@@ -5,4 +5,5 @@ class Dish
   property :description, String
   property :price, Integer
   property :category, String
+  property :user, String, key: false
 end
