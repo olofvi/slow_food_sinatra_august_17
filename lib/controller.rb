@@ -110,4 +110,18 @@ class SlowFood < Sinatra::Base
 
     erb :protected
   end
+
+  get '/order/add/:dish_id' do
+    env['warden'].authenticate!
+    dish = Dish.get(params[:dish_id])
+    if session[:order_id]
+      order = Order.get(session[:order_id])
+    else
+      order = Order.create(user: current_user)
+      session[:order_id] = order.id
+    end
+    order.add_item(dish, dish.price, 1)
+    flash[:success] = "#{dish.name} was added to your order"
+    redirect '/'
+  end
 end
