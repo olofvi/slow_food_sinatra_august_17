@@ -6,30 +6,28 @@
 </head>
 <body>
 
-<div align="center" id="info">
-  <pre>Contact information:  email: you_wanna@spice_it_up.now  |  Address: Spice rd 1, 234 56 It, Up  |  Owner: Hothead-Hermes</pre>
-  <h1>Restaurant Spice It Up</h1>
-  <p>Opening hours: 12.00-24.00</p>
-   Welcome to Spice It Up! Are you tired of the same boring food day after day? Don't worry, we got your back! We specialise in the best food from Iceland, Kyrgyzstan, Italy, South Africa and Sweden. Try it out!
-</div>
-
-<div align="center">
-  <h1>Menu</h1>
-
+  <div class="hero-section">
+    <div class="hero-section-text">
+      <h1>Spice It Up</h1>
+      <h4>The best food from Iceland, Kyrgyzstan, Italy, South Africa and Sweden.</h4>
+    </div>
+  </div>
+<div id="menu" align="center">
+  <h2>Our Menu</h2>
   <% if @dishes_by_category.any? %>
     <% @dishes_by_category.each do |key, category| %>
-      <h2> <%= key %> </h2>
+      <h3> <%= key %> </h3>
       <% category.each do |dish| %>
-        <h3> <%= dish.name %> </h3>
+        <h4> <%= dish.name %> </h4>
         <p> <%= dish.description %> </p>
         <p> Price: <%= dish.price %> kr </p>
-        <p><a href="#" class="button">Add to order</a><br/>
+        <p><a href="#" class="button custom">Add to order</a><br/>
         <% end %>
     <% end %>
   <% else %>
     <p>There are no dishes in the system!</p>
   <% end %>
-
   </div>
+  <footer id="contact" align="center">Contact: you_wanna@spice_it_up.now | Phone: +12 345 67 89 | Address: Spice rd 1, 234 56 It, Up | Owner: Hothead-Hermes | Opening hours: 12.00-24.00</footer>
 </body>
 </html>
