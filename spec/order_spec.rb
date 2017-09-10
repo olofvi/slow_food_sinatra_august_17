@@ -23,9 +23,20 @@ describe Order do
      expect(subject.order_items.count).to eql 1
    end
 
-   it 'it displays total sum of the order' do
+   it 'it displays total sum of the order with 1 in quantity' do
+     subject.add_item(item_1, item_1.price, 1)
+     expect(subject.total).to eql item_1.price
+   end
+
+   it 'it displays total sum of the order with 2 in quantity' do
      subject.add_item(item_1, item_1.price, 2)
      expect(subject.total).to eql item_1.price * 2
+   end
+
+   it 'it displays total sum of the order with 2 items' do
+     subject.add_item(item_1, item_1.price, 1)
+     subject.add_item(item_2, item_2.price, 1)
+     expect(subject.total).to eql item_1.price + item_2.price
    end
 
    it 'it displays estimated pick up time' do
