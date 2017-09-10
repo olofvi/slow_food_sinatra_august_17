@@ -20,7 +20,7 @@ class Order
   def total
     total_price = 0
     self.order_items.each { |item| total_price += (item.price * item.quantity)}
-    items_total
+    total_price
   end
 
   def set_pick_up_time
