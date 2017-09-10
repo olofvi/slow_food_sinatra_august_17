@@ -42,4 +42,10 @@ describe Order do
    it 'it displays estimated pick up time' do
      expect(subject.set_pick_up_time).to eql Time.now.round + 1800
    end
+
+   it 'removes item from order' do
+     subject.add_item(item_1, item_1.price, 2)
+     subject.remove_item(item_1, 1)
+     expect(subject.order_items.count).to eql 1
+   end
  end

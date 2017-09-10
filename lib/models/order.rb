@@ -18,6 +18,14 @@ class Order
     OrderItem.create(dish: obj, price: price, quantity: qty, order: self)
   end
 
+  def remove_item(obj, qty)
+    self.order_items.each do |item|
+      if item.id == obj.id
+        item.quantity -= qty
+      end
+    end
+  end
+
   def total
     total = 0
     self.order_items.each { |item| total += (item.price * item.quantity)}
