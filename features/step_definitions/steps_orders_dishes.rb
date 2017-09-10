@@ -16,7 +16,7 @@ Then(/^my order should contain "([^"]*)" item$/) do |count|
 end
 
 Then(/^the total price should be "([^"]*)"$/) do |dish_price|
-  order = Order
+  order = Order.last
   order_item = OrderItem.last
-  expect(order.order_item.count * order.order_item.price).to eq total_price
+  expect(order.order_items.count * order_item.price).to eq order.total
 end

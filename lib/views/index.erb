@@ -15,7 +15,7 @@
 
   <div align="center">
     <h1>Menu</h1>
-      <% if @cost > 0%>
+      <% if @cost%>
         <p>Total cost of order is: <%= @cost %></p>
         <% end %>
       <% if @dishes_by_category.any? %>
@@ -23,12 +23,15 @@
           <h2> <%= key %> </h2>
             <% category.each do |dish| %>
                 <div id="<%= "dish_#{dish.id}" %>">
-                  <form class="" action="<%= "/order/add/#{dish.id}" %>">
                     <h3> <%= dish.name %> </h3>
                     <p> <%= dish.description %> </p>
                     <p> Price: <%= dish.price %> kr </p>
+                    <form class="" action="<%= "/order/add/#{dish.id}" %>">
                     <input type="text" name="quantity" value="1">
                     <input type="submit" value="Add">
+                  </form>
+                  <form class="" action="<%= "/order/remove/#{dish.id}" %>" method="get">
+                    <input type="submit" value="remove">
                   </form>
               </div>
             <% end %>
