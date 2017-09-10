@@ -11,6 +11,6 @@ class OrderItem
   validates_presence_of :dish
 
   def item
-    Dish.get(self.dish.is)
+    Dish.get(self.dish.id)
   end
 end

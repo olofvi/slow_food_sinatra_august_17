@@ -112,7 +112,7 @@ class SlowFood < Sinatra::Base
       order = Order.create(user_id: current_user.id)
       session[:order_id] = order.id
     end
-    order.add_item(dish, dish.price, params[:quantity])
+    order.add_item(dish, dish.price, params[:quantity].to_i)
     flash[:success] = "#{dish.name} was added to your order"
     redirect '/'
   end

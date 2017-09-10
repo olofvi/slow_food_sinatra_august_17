@@ -7,9 +7,9 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'sinatra_warden'
 gem 'shotgun', '0.9.1'
 
-gem 'data_mapper'
+gem 'data_mapper', '~> 1.2'
 gem 'pg'
-gem 'dm-postgres-adapter'
+gem 'dm-postgres-adapter', '~> 1.2'
 gem 'pry-byebug'
 
 group :development, :test do
