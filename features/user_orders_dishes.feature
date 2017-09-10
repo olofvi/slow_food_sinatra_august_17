@@ -17,3 +17,4 @@ Scenario: User clicks add for a dish
   Given I click "Add" for "Carbonara"
   Then I should see a message saying "Carbonara was added to your order"
   And my order should contain "2" item
+  And the total price should be "240"
