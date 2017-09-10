@@ -46,7 +46,10 @@ class SlowFood < Sinatra::Base
 
   get '/' do
     @dishes_by_category = Dish.all.group_by{|h| h[:category]}
-
+    if session[:order_id]
+      order = Order.get(session[:order_id])
+      @cost = order.total
+    end
     erb :index
   end
 
@@ -115,7 +118,6 @@ class SlowFood < Sinatra::Base
 
   get '/order/add/:dish_id' do
     env['warden'].authenticate!
-    # binding.pry
     dish = Dish.get(params[:dish_id])
     if session[:order_id]
       order = Order.get(session[:order_id])
@@ -124,9 +126,7 @@ class SlowFood < Sinatra::Base
       session[:order_id] = order.id
     end
     order.add_item(dish, dish.price, params[:quantity])
-    flash[:success] = "#{dish.name} was added to your order, and total value is #{order.total}"
-    @cost = order.total_price
-    # binding.pry
+    flash[:success] = "#{dish.name} was added to your order}"
     redirect '/'
   end
 end

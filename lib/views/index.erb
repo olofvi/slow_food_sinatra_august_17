@@ -15,7 +15,7 @@
 
   <div align="center">
     <h1>Menu</h1>
-      <% if @cost %>
+      <% if @cost > 0%>
         <p>Total cost of order is: <%= @cost %></p>
         <% end %>
       <% if @dishes_by_category.any? %>
@@ -31,10 +31,10 @@
                     <input type="submit" value="Add">
                   </form>
               </div>
-    <% end %>
-    <% end %>
-    <% else %>
-    <p>There are no dishes in the system!</p>
+            <% end %>
+          <% end %>
+        <% else %>
+      <p>There are no dishes in the system!</p>
     <% end %>
 
   </div>
