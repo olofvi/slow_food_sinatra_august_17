@@ -49,10 +49,18 @@ And(/^I give wrong password in confirmation$/) do
   }
 end
 
-And(/^The email address is already registered$/) do
-  User.create( username: "Gianni", password: "passw", email: "andreademoja@gmail.com", phone_number: "1234556")
+And(/^The email address user submits is already registered$/) do
+  User.create!( username: 'Gianni',
+                password: 'passw',
+                email: 'somewhere@some.com',
+                phone_number: '1234556')
 end
 
 Given(/^There is a user called Thomas in our database$/) do
-  User.create(firstname: "Name", lastname: "last name", username: "Thomas", password: "passw", email: "somewhere@some.com", phone_number: "1234556")
+  User.create!(firstname: 'Name',
+               lastname: 'last name',
+               username: 'Thomas',
+               password: 'passw',
+               email: 'somewhere@some.com',
+               phone_number: '1234556')
 end
