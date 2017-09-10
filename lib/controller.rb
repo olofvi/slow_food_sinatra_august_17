@@ -46,6 +46,7 @@ class SlowFood < Sinatra::Base
 
   get '/' do
     @dishes_by_category = Dish.all.group_by{|h| h[:category]}
+
     erb :index
   end
 
@@ -124,6 +125,8 @@ class SlowFood < Sinatra::Base
     end
     order.add_item(dish, dish.price, params[:quantity])
     flash[:success] = "#{dish.name} was added to your order, and total value is #{order.total}"
+    @cost = order.total_price
+    # binding.pry
     redirect '/'
   end
 end

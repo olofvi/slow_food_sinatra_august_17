@@ -8,13 +8,11 @@ Background:
   And I am logged in as Thomas
   And there is a dish named "Carbonara" in our database
   And its dish price is "120" in our database
-  And there is a dish named "Pizza" in our database
-  And its dish price is "100" in our database
   And I visit the site
 
 Scenario: User clicks add for a dish
-  Given I click "Add" for "Pizza"
-  Then I should see a message saying "Pizza was added to your order"
+  Given I click "Add" for "Carbonara"
+  Then I should see a message saying "Carbonara was added to your order"
   And my order should contain "1" item
   Given I click "Add" for "Carbonara"
   Then I should see a message saying "Carbonara was added to your order"

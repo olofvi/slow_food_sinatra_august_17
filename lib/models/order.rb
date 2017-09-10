@@ -3,6 +3,7 @@ class Order
 
   property :id, Serial, key: true, required: false
   property :pick_up_time, Time
+  property :total_price, Float
 
   has n, :order_items
   belongs_to :user
@@ -18,9 +19,9 @@ class Order
   end
 
   def total
-    total_price = 0
-    self.order_items.each { |item| total_price += (item.price * item.quantity)}
-    total_price
+    total = 0
+    self.order_items.each { |item| total += (item.price * item.quantity)}
+    self.total_price = total
   end
 
   def set_pick_up_time
