@@ -24,6 +24,7 @@ class Order
   end
 
   def set_pick_up_time
-    self.pick_up_time = Time.now + 1800
+    t = Time.now
+    self.pick_up_time = t.round+ 1800
   end
 end

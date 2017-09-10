@@ -114,7 +114,7 @@ class SlowFood < Sinatra::Base
 
   get '/order/add/:dish_id' do
     env['warden'].authenticate!
-    binding.pry
+    # binding.pry
     dish = Dish.get(params[:dish_id])
     if session[:order_id]
       order = Order.get(session[:order_id])

@@ -18,8 +18,12 @@ describe Order do
    subject { described_class.create(user: buyer) }
 
 
-   it 'adds dish to basket as basket_item' do
+   it 'adds dish to order as order_item' do
      subject.add_item(item_1, item_1.price, 2)
      expect(subject.order_items.count).to eql 1
+   end
+
+   it 'it displays estimated pick up time' do
+     expect(subject.set_pick_up_time).to eql Time.now.round + 1800
    end
  end
