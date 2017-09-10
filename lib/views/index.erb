@@ -1,7 +1,33 @@
-<% if @dishes.any? %>
-  <% @dishes.each do |dish| %>
-    <%= dish.name %>
-  <%end%>
-<% else %>
-  <p>There are no dishes in the system</p>
-<%end%>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Spice It Up</title>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <div class="hero-section">
+    <div class="hero-section-text">
+      <h1>Spice It Up</h1>
+      <h4><%= @restaurant.description if @restaurant %></h4>
+    </div>
+  </div>
+<div id="menu" align="center">
+  <h2>Our Menu</h2>
+  <% if @dishes_by_category.any? %>
+    <% @dishes_by_category.each do |key, category| %>
+      <h3> <%= key %> </h3>
+      <% category.each do |dish| %>
+        <h4> <%= dish.name %> </h4>
+        <p> <%= dish.description %> </p>
+        <p> Price: <%= dish.price %> kr </p>
+        <p><a href="#" class="button custom">Add to order</a><br/>
+        <% end %>
+    <% end %>
+  <% else %>
+    <p>There are no dishes in the system!</p>
+  <% end %>
+  </div>
+  <footer id="contact" align="center">Contact: you_wanna@spice_it_up.now | Phone: +12 345 67 89 | Address: Spice rd 1, 234 56 It, Up | Owner: Hothead-Hermes | Opening hours: 12.00-24.00</footer>
+</body>
+</html>

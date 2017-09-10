@@ -14,14 +14,12 @@ class SlowFood < Sinatra::Base
   enable :sessions
   register Sinatra::Flash
   register Sinatra::Warden
-  set :session_secret, "supersecret"
+  set :session_secret, 'supersecret'
 
  #binding.pry
   #Create a test User
   if User.count == 0
-   @user = User.create(username: "admin")
-   @user.password = "admin"
-   @user.save
+    User.create!(username: 'admin', password: 'password', email: 'admin@admin.com', phone_number: '123456')
   end
 
  use Warden::Manager do |config|
@@ -50,12 +48,51 @@ class SlowFood < Sinatra::Base
     env['REQUEST_METHOD'] = 'POST'
   end
 
- get '/' do
-    @dishes = Dish.all
+  get '/' do
+    @restaurant = Restaurant.get(1)
+    @dishes_by_category = Dish.all.group_by { |h| h[:category] }
     erb :index
   end
 
- get '/auth/login' do
+  get '/auth/create' do
+    erb :create
+  end
+
+  post '/auth/create' do
+    user = User.new(params[:user])
+    if user.valid?
+      user.save
+      env['warden'].authenticate!
+      flash[:success] = "Successfully created account for #{current_user.username}"
+      redirect '/'
+    else
+      flash[:error] = user.errors.full_messages.join(',')
+    end
+    redirect '/auth/create'
+
+    # if_old_user = User.first(username: params[:user][:username])
+    # if_email_already_used = User.first(email: params[:user][:email])
+    # if params[:user].any? { |key, value| value == "" }
+    #   flash[:error] = "Need to fill in all information"
+    #   redirect '/auth/create'
+    # elsif params[:user][:password] != params[:confirm_password]
+    #   flash[:error] = "Passwords must match"
+    #   redirect '/auth/create'
+    # elsif !if_email_already_used.nil?
+    #   flash[:error] = "Email address already registered"
+    #   redirect '/auth/create'
+    # elsif !if_old_user.nil?
+    #   flash[:error] = "That user already exists"
+    #   redirect '/auth/create'
+    # else
+    #   user = User.create(params[:user])
+    #   flash[:success] = "Successfully created new user"
+    #   env['warden'].set_user(user)
+    #   redirect '/'
+    # end
+  end
+
+  get '/auth/login' do
     erb :login
   end
 
