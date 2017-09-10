@@ -1,3 +1,6 @@
+require 'dm-validations'
+require 'pry'
+
 class User
   include DataMapper::Resource
   attr_accessor :password_confirmation

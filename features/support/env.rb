@@ -8,7 +8,6 @@ require 'rspec'
 require 'pry'
 require 'database_cleaner'
 require 'database_cleaner/cucumber'
-require 'pry-byebug'
 
 Capybara.app = SlowFood
 

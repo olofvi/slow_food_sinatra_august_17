@@ -1,34 +1,62 @@
-<nav class="hover-underline-menu" data-menu-underline-from-center>
-   <ul class="menu align-center">
-     <li><a href="/">Home</a></li>
-     <% if current_user %>
-     <li><a href="">Logged in as <%= current_user.username %></a>
-     <li><a href="/auth/logout">Log Out</a></p></li>
-     <% else %>
-     <li><a href="/auth/create">Register</a></li>
-     <li><a href="/auth/login">Log In</a></li>
-     <% end %>
-     <% if flash[:success] %>
-     <li><a href="" <div style="color:green;">
-         <%= flash[:success] %>
-       </div></a></li>
-     <% end %>
-     <li><a href=""<% if flash[:error] %>
-       <div style="color:red;">
-         <%= flash[:error] %>
-       </div></a></li>
-     <% end %>
-     <li><a href="#contact">Phone: +12 345 67 89</a></li>
-     <li><a href="#contact">Open 12.00-24.00</a></li>
-   </ul>
- </nav>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="<%= url("/css/foundation.css")%>">
+  <link rel="stylesheet" type="text/css" href="<%= url("/css/app.css")%>">
+  <script src="<%= url("/js/vendor/jquery.js")%>"></script>
+  <script src="<%= url("/js/vendor/foundation.js")%>"></script>
+  <script src="<%= url("/js/app.js")%>"></script>
+  <title>Spice It Up</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
 
- <% if flash[:error] %>
-   <div style="color:red;">
-     <%= flash[:error] %>
-   </div>
- <% end %>
+  <nav class="hover-underline-menu" data-menu-underline-from-center>
+    <ul class="menu align-center">
+      <li><a href="/">Home</a></li>
+      <% if current_user %>
+      <li><a href="">Logged in as <%= current_user.username %></a>
+      <li><a href="/auth/logout">Log Out</a></p></li>
+      <% else %>
+      <li><a href="/auth/create">Register</a></li>
+      <li><a href="/auth/login">Log In</a></li>
+      <% end %>
+      <% if flash[:success] %>
+      <li><a href="" <div style="color:green;">
+          <%= flash[:success] %>
+        </div></a></li>
+      <% end %>
+      <li><a href=""<% if flash[:error] %>
+        <div style="color:red;">
+          <%= flash[:error] %>
+        </div></a></li>
+      <% end %>
+      <li><a href="#contact">Phone: +12 345 67 89</a></li>
+      <li><a href="#contact">Open 12.00-24.00</a></li>
+    </ul>
+  </nav>
 
- <%= yield %>
- </body>
+  <!-- <% if current_user %>
+    Logged in as <%= current_user.username %>
+    <a href="/auth/logout">Log Out</a></p>
+  <% else %>
+    <a href="/auth/create">Register</a>
+
+    <a href="/auth/login">Log In</a>
+  <% end %> -->
+
+  <!-- <% if flash[:success] %>
+    <div style="color:green;">
+      <%= flash[:success] %>
+    </div>
+  <% end %> -->
+
+  <% if flash[:error] %>
+    <div style="color:red;">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+  </body>
 </html>
