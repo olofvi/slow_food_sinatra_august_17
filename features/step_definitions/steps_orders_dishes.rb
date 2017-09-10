@@ -1,6 +1,6 @@
 Given(/^I am logged in as Thomas$/) do
-  user = User.first(username: 'Thomas')
-  login_as user
+  @user = User.first(username: 'Thomas')
+  login_as @user
 end
 
 Given(/^I click "([^"]*)" for "([^"]*)"$/) do |button, dish_name|

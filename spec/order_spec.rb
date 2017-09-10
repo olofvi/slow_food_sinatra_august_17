@@ -7,11 +7,12 @@ describe Order do
 
   let!(:buyer) { User.create!(username: 'Buyer',
                              password: 'password',
+                             password_confirmation: 'password',
                              phone_number: '123456',
                              email: 'buyer@test.com') }
 
   subject do
-    described_class.create(user_id: buyer.id)
+    described_class.create!(user: buyer)
   end
   it { is_expected.to have_property :id }
   it { is_expected.to have_many :order_items }
@@ -45,8 +46,11 @@ describe Order do
   end
 
   it 'removes item from order' do
+    #we add two items to the order. We count unique items, not the total quantity
     subject.add_item(item_1, item_1.price, 2)
-    subject.remove_item(item_1, 1)
+    subject.add_item(item_2, item_2.price, 2)
+    expect(subject.order_items.count).to eql 2
+    subject.remove_item(item_1)
     expect(subject.order_items.count).to eql 1
   end
 

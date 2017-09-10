@@ -1,8 +1,7 @@
-Given(/^There are "([^"]*)" "([^"]*)" in our order_list$/) do |item_count, dish_name|
-  user = User.first(username: 'Thomas')
-  login_as user
+Given(/^There are "([^"]*)" "([^"]*)" in our order$/) do |item_count, dish_name|
+
   dish = Dish.first(name: dish_name)
-  order = Order.create(user: user)
+  order = Order.create!(user: @user)
   order.add_item(dish, dish.price, item_count)
 end
 

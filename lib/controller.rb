@@ -43,7 +43,8 @@ class SlowFood < Sinatra::Base
   end
 
   get '/' do
-    @dishes_by_category = Dish.all.group_by{ |h| h[:category] }
+    session[:order_id] ? @order = Order.get(session[:order_id]) : @order = nil
+    @dishes_by_category = Dish.all.group_by { |h| h[:category] }
     if session[:order_id]
       order = Order.get(session[:order_id])
       @cost = order.total

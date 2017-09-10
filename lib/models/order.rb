@@ -14,29 +14,31 @@ class Order
     set_pick_up_time
   end
 
+  def order_include?(dish)
+    binding.pry
+  end
+
   def add_item(obj, price, qty)
     OrderItem.create(dish: obj, price: price, quantity: qty, order_id: self.id)
   end
 
-  def remove_item(obj, qty)
+  def remove_item(obj)
     self.order_items.each do |item|
       if item.id == obj.id
-        item.quantity -= qty
+        item.destroy!
       end
-    end
+    end if self.order_items.any?
   end
 
   def cancel_order
-    if self.order_items.any?
-      self.order_items.each do |item|
-        item.destroy
-      end
-    end
+    self.order_items.each do |item|
+      item.destroy!
+    end if self.order_items.any?
   end
 
   def total
     total = 0
-    self.order_items.each { |item| total += (item.price * item.quantity)}
+    self.order_items.each { |item| total += (item.price * item.quantity) }
     self.total_price = total
   end
 

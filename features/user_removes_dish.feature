@@ -8,10 +8,10 @@ Background:
   And I am logged in as Thomas
   And there is a dish named "Carbonara" in our database
   And its dish price is "120" in our database
-  And There are "2" "Carbonara" in our order_list
+  And There are "2" "Carbonara" in our order
   And I visit the site
 
 Scenario: User clicks remove a dish
   Given I click "remove" "Carbonara"
   Then I should see a message saying "Carbonara was removed from your order"
-  And my order should contain "1" item
+  And my order should contain "0" item

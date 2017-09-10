@@ -19,7 +19,11 @@
             <p> <%= dish.description %> </p>
             <p> Price: <%= dish.price %> kr </p>
             <input type="text" name="quantity" value="1">
-            <input type="submit" value="Add" class="button">
+            <% if @order.order_include?(dish)%>
+              <a href="<%= "/order/remove/#{dish.id}"%>"></a>
+            <% else %>
+              <input type="submit" value="Add" class="button">
+          <% end %>
           </form>
         </div>
       <% end %>
