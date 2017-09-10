@@ -27,7 +27,13 @@ class Order
   end
 
   def cancel_order
-    Order.delete
+    binding.pry
+   if self.order_items.any?
+     self.order_items.each do |item|
+       item.destroy
+     end
+   end
+   binding.pry
   end
 
   def total
