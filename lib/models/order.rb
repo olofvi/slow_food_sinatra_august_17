@@ -15,7 +15,7 @@ class Order
   end
 
   def add_item(obj, price, qty)
-    OrderItem.create(dish: obj, price: price, quantity: qty, order: self)
+    OrderItem.create(dish: obj, price: price, quantity: qty, order_id: self.id)
   end
 
   def remove_item(obj, qty)

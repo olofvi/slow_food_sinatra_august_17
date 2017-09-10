@@ -11,7 +11,7 @@ describe Order do
                              email: 'buyer@test.com') }
 
   subject do
-    described_class.create(user: buyer)
+    described_class.create(user_id: buyer.id)
   end
   it { is_expected.to have_property :id }
   it { is_expected.to have_many :order_items }
