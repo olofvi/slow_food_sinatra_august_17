@@ -11,6 +11,8 @@ class User
   property :phone_number, String
   property :address, String
 
+  has n, :orders
+
   validates_presence_of :username, message: 'Please add username'
   validates_presence_of :email, message: 'Please add email address'
   validates_presence_of :phone_number, message: 'Please provide phone number'

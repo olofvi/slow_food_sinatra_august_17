@@ -5,53 +5,54 @@ describe Order do
                              price: 50) }
   let(:item_2) { Dish.create(name: 'Test 2', price: 10) }
 
-  let(:buyer) { binding.pry; User.create!(username: 'Buyer',
+  let!(:buyer) { User.create!(username: 'Buyer',
                              password: 'password',
                              phone_number: '123456',
                              email: 'buyer@test.com') }
 
-  subject { described_class.create(user: buyer) }
+  subject do
+    described_class.create(user_id: buyer.id)
+  end
+  it { is_expected.to have_property :id }
+  it { is_expected.to have_many :order_items }
+  it { is_expected.to belong_to :user }
+  it { is_expected.to validate_presence_of :user }
 
-  it{is_expected.to have_property :id}
-  it{is_expected.to have_many :order_items}
-  it{is_expected.to belong_to :user}
-  it{is_expected.to validate_presence_of :user}
 
+  it 'adds dish to order as order_item' do
+    subject.add_item(item_1, item_1.price, 2)
+    expect(subject.order_items.count).to eql 1
+  end
 
-   it 'adds dish to order as order_item' do
-     subject.add_item(item_1, item_1.price, 2)
-     expect(subject.order_items.count).to eql 1
-   end
+  it 'it displays total sum of the order with 1 in quantity' do
+    subject.add_item(item_1, item_1.price, 1)
+    expect(subject.total).to eql item_1.price
+  end
 
-   it 'it displays total sum of the order with 1 in quantity' do
-     subject.add_item(item_1, item_1.price, 1)
-     expect(subject.total).to eql item_1.price
-   end
+  it 'it displays total sum of the order with 2 in quantity' do
+    subject.add_item(item_1, item_1.price, 2)
+    expect(subject.total).to eql item_1.price * 2
+  end
 
-   it 'it displays total sum of the order with 2 in quantity' do
-     subject.add_item(item_1, item_1.price, 2)
-     expect(subject.total).to eql item_1.price * 2
-   end
+  it 'it displays total sum of the order with 2 items' do
+    subject.add_item(item_1, item_1.price, 1)
+    subject.add_item(item_2, item_2.price, 1)
+    expect(subject.total).to eql item_1.price + item_2.price
+  end
 
-   it 'it displays total sum of the order with 2 items' do
-     subject.add_item(item_1, item_1.price, 1)
-     subject.add_item(item_2, item_2.price, 1)
-     expect(subject.total).to eql item_1.price + item_2.price
-   end
+  it 'it displays estimated pick up time' do
+    expect(subject.set_pick_up_time).to eql Time.now.round + 1800
+  end
 
-   it 'it displays estimated pick up time' do
-     expect(subject.set_pick_up_time).to eql Time.now.round + 1800
-   end
+  it 'removes item from order' do
+    subject.add_item(item_1, item_1.price, 2)
+    subject.remove_item(item_1, 1)
+    expect(subject.order_items.count).to eql 1
+  end
 
-   it 'removes item from order' do
-     subject.add_item(item_1, item_1.price, 2)
-     subject.remove_item(item_1, 1)
-     expect(subject.order_items.count).to eql 1
-   end
-
-   it 'cancels order' do
-     subject.add_item(item_1, item_1.price, 2)
-     subject.cancel_order
-     expect(subject.order_items.count).to eql 0
-   end
- end
+  it 'cancels order' do
+    subject.add_item(item_1, item_1.price, 2)
+    subject.cancel_order
+    expect(subject.order_items.count).to eql 0
+  end
+end

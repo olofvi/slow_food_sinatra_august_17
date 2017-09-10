@@ -27,13 +27,11 @@ class Order
   end
 
   def cancel_order
-    binding.pry
-   if self.order_items.any?
-     self.order_items.each do |item|
-       item.destroy
-     end
-   end
-   binding.pry
+    if self.order_items.any?
+      self.order_items.each do |item|
+        item.destroy
+      end
+    end
   end
 
   def total
@@ -44,6 +42,6 @@ class Order
 
   def set_pick_up_time
     t = Time.now
-    self.pick_up_time = t.round+ 1800
+    self.pick_up_time = t.round + 1800
   end
 end

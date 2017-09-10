@@ -1,41 +1,34 @@
- <div class="hero-section">
-    <div class="hero-section-text">
-      <h1>Spice It Up</h1>
-      <h4>The best food from Iceland, Kyrgyzstan, Italy, South Africa and Sweden.</h4>
-    </div>
+<div class="hero-section">
+  <div class="hero-section-text">
+    <h1>Spice It Up</h1>
+    <h4>The best food from Iceland, Kyrgyzstan, Italy, South Africa and Sweden.</h4>
   </div>
+</div>
 <div id="menu" align="center">
   <h2>Our Menu</h2>
   <% if @cost %>
-        <p>Total cost of order is: <%= @cost %></p>
+    <p>Total cost of order is: <%= @cost %></p>
   <% end %>
   <% if @dishes_by_category.any? %>
     <% @dishes_by_category.each do |key, category| %>
-      <h3> <%= key %> </h3>
+      <h2> <%= key %> </h2>
       <% category.each do |dish| %>
-        <h4> <%= dish.name %> </h4>
-        <p> <%= dish.description %> </p>
-        <p> Price: <%= dish.price %> kr </p>
-        <p><a href="#" class="button custom">Add to order</a><br/>
-      <% if @dishes_by_category.any? %>
-        <% @dishes_by_category.each do |key, category| %>
-          <h2> <%= key %> </h2>
-            <% category.each do |dish| %>
-                <div id="<%= "dish_#{dish.id}" %>">
-                  <form class="" action="<%= "/order/add/#{dish.id}" %>">
-                    <h3> <%= dish.name %> </h3>
-                    <p> <%= dish.description %> </p>
-                    <p> Price: <%= dish.price %> kr </p>
-                    <input type="text" name="quantity" value="1">
-                    <input type="submit" value="Add">
-                  </form>
-              </div>
-          <% end %>
-        <% end %>
-    <% else %>
-    <p>There are no dishes in the system!</p>
+        <div id="<%= "dish_#{dish.id}" %>">
+          <form  action="<%= "/order/add/#{dish.id}" %>" method="post">
+            <h3> <%= dish.name %> </h3>
+            <p> <%= dish.description %> </p>
+            <p> Price: <%= dish.price %> kr </p>
+            <input type="text" name="quantity" value="1">
+            <input type="submit" value="Add" class="button">
+          </form>
+        </div>
+      <% end %>
     <% end %>
-  </div>
-  <footer id="contact" align="center">Contact: you_wanna@spice_it_up.now | Phone: +12 345 67 89 | Address: Spice rd 1, 234 56 It, Up | Owner: Hothead-Hermes | Opening hours: 12.00-24.00</footer>
-</body>
-</html>
+  <% else %>
+    <p>There are no dishes in the system!</p>
+  <% end %>
+</div>
+<footer id="contact" align="center">Contact: you_wanna@spice_it_up.now | Phone: +12 345 67 89 | Address: Spice rd
+  1, 234 56 It, Up | Owner: Hothead-Hermes | Opening hours: 12.00-24.00
+</footer>
+

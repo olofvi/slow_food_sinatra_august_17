@@ -103,13 +103,13 @@ class SlowFood < Sinatra::Base
     erb :protected
   end
 
-  get '/order/add/:dish_id' do
+  post '/order/add/:dish_id' do
     env['warden'].authenticate!
     dish = Dish.get(params[:dish_id])
     if session[:order_id]
       order = Order.get(session[:order_id])
     else
-      order = Order.create(user: current_user)
+      order = Order.create(user_id: current_user.id)
       session[:order_id] = order.id
     end
     order.add_item(dish, dish.price, params[:quantity])
@@ -122,13 +122,14 @@ class SlowFood < Sinatra::Base
     dish = Dish.get(params[:dish_id])
     if session[:order_id]
       order = Order.get(session[:order_id])
+      order.remove_item(dish, params[:quantity])
+      flash[:success] = "#{dish.name} was removed from your order"
     else
       flash[:alert] = "You dont have any #{dish.name} in your order"
       # order = Order.create(user: current_user)
       # session[:order_id] = order.id
     end
-    order.remove_item(dish, params[:quantity])
-    flash[:success] = "#{dish.name} was removed from your order"
+
     redirect '/'
   end
 
