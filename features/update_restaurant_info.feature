@@ -19,5 +19,5 @@ Scenario: admin loggs in
   And I fill the description field 'Opening hours'
   And I submit
   Then I should see the message "You have successfully updated the restaurant's description"
-  And I see a new description on the main page
-  Then show me the page
+  And I see the updated description on the main page
+  #Then show me the page
