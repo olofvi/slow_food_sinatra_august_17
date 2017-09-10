@@ -143,4 +143,17 @@ class SlowFood < Sinatra::Base
     flash[:success] = "#{dish.name} was removed from your order"
     redirect '/'
   end
+
+  get '/order/clear' do
+    env['warden'].authenticate!
+    dish = Dish.get(params[:dish_id])
+    if session[:order_id]
+      order = Order.get(session[:order_id])
+    else
+      flash[:alert] = "You dont have any #{dish.name} in your order"
+    end
+    order.clear
+    flash[:success] = "Your order was canceled"
+    redirect '/'
+  end
 end

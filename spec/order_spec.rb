@@ -48,4 +48,10 @@ describe Order do
      subject.remove_item(item_1, 1)
      expect(subject.order_items.count).to eql 1
    end
+
+   it 'cancels order' do
+     subject.add_item(item_1, item_1.price, 2)
+     subject.cancel_order
+     expect(subject.order_items.count).to eql 0
+   end
  end

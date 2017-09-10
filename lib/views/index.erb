@@ -22,7 +22,7 @@
         <% @dishes_by_category.each do |key, category| %>
           <h2> <%= key %> </h2>
             <% category.each do |dish| %>
-                <div id="<%= "dish_#{dish.id}" %>">
+                <div id="<%= "dish_form#{dish.id}" %>">
                     <h3> <%= dish.name %> </h3>
                     <p> <%= dish.description %> </p>
                     <p> Price: <%= dish.price %> kr </p>

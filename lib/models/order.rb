@@ -26,6 +26,10 @@ class Order
     end
   end
 
+  def cancel_order
+    Order.delete
+  end
+
   def total
     total = 0
     self.order_items.each { |item| total += (item.price * item.quantity)}
