@@ -19,12 +19,13 @@ class Order
   end
 
   def add_item(obj, price, qty)
-    OrderItem.create!(dish: obj, price: price, quantity: qty, order_id: self.id)
+    #Change so it updates quantity instead creating new item in order
+    OrderItem.create(dish: obj, price: price, quantity: qty, order_id: self.id)
   end
 
   def remove_item(obj)
     self.order_items.each do |item|
-      if item.id == obj.id
+      if item.dish.id == obj.id
         item.destroy!
       end
     end if self.order_items.any?

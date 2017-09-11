@@ -127,7 +127,6 @@ class SlowFood < Sinatra::Base
       # order = Order.create(user: current_user)
       # session[:order_id] = order.id
     end
-
     redirect '/'
   end
 

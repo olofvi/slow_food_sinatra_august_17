@@ -7,7 +7,7 @@ Then(/^I should see a message saying "([^"]*)"$/) do |message|
 end
 
 Given(/^there is a dish named "([^"]*)" in our database$/) do |dish_name|
-  Dish.create(name: dish_name)
+  Dish.create(name: dish_name, price: 10)
 end
 
 Given(/^its dish price is "([^"]*)" in our database$/) do |dish_price|
