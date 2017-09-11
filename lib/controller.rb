@@ -140,7 +140,7 @@ class SlowFood < Sinatra::Base
     else
       flash[:alert] = "You dont have any #{dish.name} in your order"
     end
-    order.clear
+    order.cancel_order
     flash[:success] = "Your order was canceled"
     redirect '/'
   end

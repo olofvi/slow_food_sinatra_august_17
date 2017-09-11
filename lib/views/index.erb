@@ -20,10 +20,11 @@
             <p> Price: <%= dish.price %> kr </p>
             <input type="text" name="quantity" value="1">
             <% if @order && @order.order_include?(dish) %>
-              <a href="<%= "/order/remove/#{dish.id}" %>">Remove</a>
+              <div class="button">
+                <a href="<%= "/order/remove/#{dish.id}" %>">Remove</a>
+              </div>
             <% end %>
             <input type="submit" value="Add" class="button">
-
           </form>
         </div>
       <% end %>
@@ -31,7 +32,9 @@
   <% else %>
     <p>There are no dishes in the system!</p>
   <% end %>
-  <a href="<%= "/order/clear" %>">Remove</a>
+  <div class="button">
+    <a href="<%= "/order/clear" %>">Cancel Order</a>
+  </div>
 </div>
 <footer id="contact" align="center">Contact: you_wanna@spice_it_up.now | Phone: +12 345 67 89 | Address: Spice rd
   1, 234 56 It, Up | Owner: Hothead-Hermes | Opening hours: 12.00-24.00
