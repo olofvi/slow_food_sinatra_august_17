@@ -10,7 +10,6 @@ class SlowFood < Sinatra::Base
   register Sinatra::Flash
   register Sinatra::Warden
   set :session_secret, 'supersecret'
-
   #Create a test User
   if User.count == 0
     User.create!(username: 'admin', password: 'password', email: 'admin@admin.com', phone_number: '123456')
@@ -44,11 +43,9 @@ class SlowFood < Sinatra::Base
 
   get '/' do
     session[:order_id] ? @order = Order.get(session[:order_id]) : @order = nil
+    session[:order_id] ? @cost = Order.get(session[:order_id]).total : @cost = nil
     @dishes_by_category = Dish.all.group_by { |h| h[:category] }
-    if session[:order_id]
-      order = Order.get(session[:order_id])
-      @cost = order.total
-    end
+
     erb :index
   end
 
@@ -123,7 +120,7 @@ class SlowFood < Sinatra::Base
     dish = Dish.get(params[:dish_id])
     if session[:order_id]
       order = Order.get(session[:order_id])
-      order.remove_item(dish, params[:quantity])
+      order.remove_item(dish)
       flash[:success] = "#{dish.name} was removed from your order"
     else
       flash[:alert] = "You dont have any #{dish.name} in your order"

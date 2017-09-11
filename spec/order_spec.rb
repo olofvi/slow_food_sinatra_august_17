@@ -59,4 +59,10 @@ describe Order do
     subject.cancel_order
     expect(subject.order_items.count).to eql 0
   end
+
+  it '#order_include?' do
+    subject.add_item(item_1, item_1.price, 2)
+    subject.cancel_order
+    expect(subject.order_include?(item_1)).to eql true
+  end
 end

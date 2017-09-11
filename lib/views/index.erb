@@ -14,16 +14,16 @@
       <h2> <%= key %> </h2>
       <% category.each do |dish| %>
         <div id="<%= "dish_#{dish.id}" %>">
-          <form  action="<%= "/order/add/#{dish.id}" %>" method="post">
+          <form action="<%= "/order/add/#{dish.id}" %>" method="post">
             <h3> <%= dish.name %> </h3>
             <p> <%= dish.description %> </p>
             <p> Price: <%= dish.price %> kr </p>
             <input type="text" name="quantity" value="1">
-            <% if @order.order_include?(dish)%>
-              <a href="<%= "/order/remove/#{dish.id}"%>"></a>
-            <% else %>
-              <input type="submit" value="Add" class="button">
-          <% end %>
+            <% if @order && @order.order_include?(dish) %>
+              <a href="<%= "/order/remove/#{dish.id}" %>">Remove</a>
+            <% end %>
+            <input type="submit" value="Add" class="button">
+
           </form>
         </div>
       <% end %>

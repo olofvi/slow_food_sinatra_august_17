@@ -15,11 +15,11 @@ class Order
   end
 
   def order_include?(dish)
-    binding.pry
+    self.order_items.find {|item| item.item.id == dish.id}
   end
 
   def add_item(obj, price, qty)
-    OrderItem.create(dish: obj, price: price, quantity: qty, order_id: self.id)
+    OrderItem.create!(dish: obj, price: price, quantity: qty, order_id: self.id)
   end
 
   def remove_item(obj)

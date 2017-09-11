@@ -32,3 +32,8 @@ Given(/^its dish desription is "([^"]*)" in our database$/) do |dish_description
   dish = Dish.first(name: 'Carbonara')
   dish.update(description: dish_description)
 end
+
+
+Then(/^show me the page$/) do
+  save_and_open_page
+end
