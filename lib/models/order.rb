@@ -23,6 +23,7 @@ class Order
   end
 
   def remove_item(obj)
+    binding.pry
     self.order_items.each do |item|
       if item.id == obj.id
         item.destroy!

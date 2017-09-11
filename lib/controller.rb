@@ -42,6 +42,7 @@ class SlowFood < Sinatra::Base
   end
 
   get '/' do
+    binding.pry
     session[:order_id] ? @order = Order.get(session[:order_id]) : @order = nil
     session[:order_id] ? @cost = Order.get(session[:order_id]).total : @cost = nil
     @dishes_by_category = Dish.all.group_by { |h| h[:category] }
@@ -73,10 +74,13 @@ class SlowFood < Sinatra::Base
   post '/auth/login' do
     env['warden'].authenticate!
     flash[:success] = "Successfully logged in #{current_user.username}"
+    binding.pry
     if session[:return_to].nil?
       redirect '/'
     else
-      redirect session[:return_to]
+      binding.pry
+      path = request.post? ? '/' : session[:return_to]
+      redirect path
     end
   end
 
@@ -89,7 +93,6 @@ class SlowFood < Sinatra::Base
 
   post '/auth/unauthenticated' do
     session[:return_to] = env['warden.options'][:attempted_path] if session[:return_to].nil?
-
     # Set the error and use a fallback if the message is not defined
     flash[:error] = env['warden.options'][:message] || 'You must log in'
     redirect '/auth/login'
