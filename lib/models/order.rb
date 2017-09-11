@@ -15,11 +15,11 @@ class Order
   end
 
   def order_include?(dish)
-    self.order_items.find {|item| item.item.id == dish.id}
+    item = self.order_items.find {|item| item.item.id == dish.id}
+    item.id == dish.id
   end
 
   def add_item(obj, price, qty)
-    #Change so it updates quantity instead creating new item in order
     OrderItem.create(dish: obj, price: price, quantity: qty, order_id: self.id)
   end
 
