@@ -1,5 +1,19 @@
 <form action="/auth/login" method="post">
-  <p>Username: <input type="text" name="user[username]" /></p>
-  <p>Password: <input type="password" name="user[password]" /></p>
-  <input type="submit" value="Log In" />
+  <div class="form-icons">
+    <h5>Log into your account</h5>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <input class="input-group-field" type="text" name="user[username]" placeholder="Username"/>
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-key"></i>
+      </span>
+      <input class="input-group-field" type="password" name="user[password]" placeholder="Password" />
+    </div>
+    <input class="button expanded custom" type="submit" value="Log In" />
+  </div>
 </form>

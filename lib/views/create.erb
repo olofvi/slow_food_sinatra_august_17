@@ -1,12 +1,61 @@
-<form action="/auth/create" method="post">
-  <input type="text" name="user[firstname]" placeholder="First name">
-  <input type="text" name="user[lastname]" placeholder="Last name">
-  <input type="text" name="user[username]" placeholder="Username"/>
-  <p></p>
-  <input type="password" name="user[password]" placeholder="Password" />
-  <input type="password" name="user[password_confirmation]" placeholder="Confirm Password" />
-  <input type="text" name="user[address]" placeholder="Address" />
-  <input type="email" name="user[email]" placeholder="E-mail" />
-  <input type="text" name="user[phone_number]" placeholder="Phone number" />
-  <input type="submit" value="Submit">
+<form id="create_form" action="/auth/create" method="post">
+  <div class="form-icons">
+    <h5>Register for an account</h5>
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <input class="input-group-field" type="text" name="user[firstname]" placeholder="First name">
+    </div>
+
+    <div class="input-group">
+      <span class="input-group-label">
+        <i class="fa fa-user"></i>
+      </span>
+      <input class="input-group-field" type="text" name="user[lastname]" placeholder="Last name">
+    </div>
+
+    <div class="input-group">
+          <span class="input-group-label">
+            <i class="fa fa-user"></i>
+          </span>
+      <input class="input-group-field" type="text" name="user[username]" placeholder="Username"/>
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-label">
+          <i class="fa fa-key"></i>
+        </span>
+        <input class="input-group-field" type="password" name="user[password]" placeholder="Password" />
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-label">
+          <i class="fa fa-key"></i>
+        </span>
+      <input class="input-group-field" type="password" name="[user]password_confirmation" placeholder="Confirm Password" />
+    </div>
+
+    <div class="input-group">
+          <span class="input-group-label">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+          </span>
+      <input class="input-group-field" type="text" name="user[address]" placeholder="Address" />
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-label">
+          <i class="fa fa-envelope"></i>
+        </span>
+      <input class="input-group-field" type="email" name="user[email]" placeholder="E-mail" />
+    </div>
+
+    <div class="input-group">
+        <span class="input-group-label">
+          <i class="fa fa-mobile" aria-hidden="true"></i>
+        </span>
+      <input class="input-group-field" type="text" name="user[phone_number]" placeholder="Phone number" />
+    </div>
+    <input class="button expanded custom" type="submit" value="Submit">
+  </div>
 </form>

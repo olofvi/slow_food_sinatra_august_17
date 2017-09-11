@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="<%= url("/css/foundation.css")%>">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<%= url("/css/foundation.min.css")%>">
   <link rel="stylesheet" type="text/css" href="<%= url("/css/app.css")%>">
   <script src="<%= url("/js/vendor/jquery.js")%>"></script>
-  <script src="<%= url("/js/vendor/foundation.js")%>"></script>
+  <script src="<%= url("/js/vendor/foundation.min.js")%>"></script>
   <script src="<%= url("/js/app.js")%>"></script>
   <title>Spice It Up</title>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -31,32 +32,12 @@
           <%= flash[:error] %>
         </div></a></li>
       <% end %>
-      <li><a href="#contact">Phone: +12 345 67 89</a></li>
+      <li><a href="tel:+12345789">Phone: +12 345 67 89</a></li>
       <li><a href="#contact">Open 12.00-24.00</a></li>
     </ul>
   </nav>
 
-  <!-- <% if current_user %>
-    Logged in as <%= current_user.username %>
-    <a href="/auth/logout">Log Out</a></p>
-  <% else %>
-    <a href="/auth/create">Register</a>
-
-    <a href="/auth/login">Log In</a>
-  <% end %> -->
-
-  <!-- <% if flash[:success] %>
-    <div style="color:green;">
-      <%= flash[:success] %>
-    </div>
-  <% end %> -->
-
-  <% if flash[:error] %>
-    <div style="color:red;">
-      <%= flash[:error] %>
-    </div>
-  <% end %>
-
   <%= yield %>
+    <footer id="contact" align="center">Contact: you_wanna@spice_it_up.now | Phone: +12 345 67 89 | Address: Spice rd 1, 234 56 It, Up | Owner: Hothead-Hermes | Opening hours: 12.00-24.00</footer>
   </body>
 </html>

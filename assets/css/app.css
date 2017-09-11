@@ -1,3 +1,33 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+form .form-icons {
+  text-align: center;
+  margin: 5% 35%;
+}
+
+form .form-icons h4 {
+  margin-bottom: 1rem;
+}
+
+form .form-icons .input-group-label {
+  background-color: #1779ba;
+  border-color: #1779ba;
+}
+
+form .form-icons .input-group-field {
+  border-color: green;
+}
+
+form .form-icons .fa {
+  color: white;
+  width: 1rem;
+}
+
 .hero-section {
   background: url("https://static.pexels.com/photos/70842/hot-pepper-pepper-fire-food-70842.jpeg") 50% no-repeat;
   background-size: cover;
@@ -8,11 +38,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .hero-section .hero-section-text {
@@ -46,6 +76,13 @@ h3 {
 background-color: darken($buttoncolor, 10%);
 }
 
+h5 {
+  color: green;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  font-size: 40px;
+}
+
 a {
   color: green;
 }
@@ -66,4 +103,14 @@ a {
 .hover-underline-menu .menu a {
   color: #fefefe;
   padding: 1.2rem 1.5rem;
+}
+
+footer {
+  background: black;
+  color: white;
+  padding: 20px;
+}
+
+form .form-icons .input-group-label {
+    background-color: green;
 }
