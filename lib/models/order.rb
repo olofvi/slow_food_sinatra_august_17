@@ -19,8 +19,7 @@ class Order
   end
 
   def add_item(obj, price, qty)
-    binding.pry
-    OrderItem.create(dish: obj, price: price, quantity: qty, order: self)
+    OrderItem.create!(dish: obj, price: price, quantity: qty, order: self)
   end
 
   def remove_item(obj)
