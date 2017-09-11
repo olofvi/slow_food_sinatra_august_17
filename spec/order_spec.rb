@@ -62,9 +62,6 @@ describe Order do
 
   it '#order_include?' do
     subject.add_item(item_1, item_1.price, 2)
-    # subject.cancel_order
-    # binding.pry
-    expect(subject.order_include?(item_1)).to eq true
-
+    expect(subject.order_include?(item_1)).to eql true
   end
 end

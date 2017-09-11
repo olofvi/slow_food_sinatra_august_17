@@ -8,9 +8,9 @@ class OrderItem
   has 1, :dish, through: Resource
   belongs_to :order
 
-  #validates_presence_of :dish
+  validates_presence_of :dish
 
   def item
-    Dish.get(self.dish.id)
+    self.dish
   end
 end
